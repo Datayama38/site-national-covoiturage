@@ -4,8 +4,9 @@ import { getColorSchemeHtmlAttributes } from "@codegouvfr/react-dsfr/next-appdir
 import StartDsfr from "./StartDsfr";
 import { defaultColorScheme } from "./defaultColorScheme";
 import Header from "@/components/Header"
+import { ReactNode } from "react";
 
-export default function RootLayout({ children }: { children: JSX.Element; }) {
+export default function RootLayout({ children }: { children: ReactNode; }) {
 
   return (
     <html {...getColorSchemeHtmlAttributes({ defaultColorScheme })} >
