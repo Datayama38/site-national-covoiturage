@@ -1,7 +1,10 @@
 import  DeckMap  from '@/components/DeckMap'
 
+
 export default function Deck() {
   return (
-    <DeckMap />
+    <div className="fr-container">
+    < DeckMap title='test' />
+    </div>
   )
 }

@@ -2,6 +2,9 @@ import  Map  from '@/components/Map'
 
 export default function Observatoire() {
   return (
-    <Map />
+    <div className="fr-container">
+      <Map />
+    </div>
+    
   )
 }

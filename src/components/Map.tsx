@@ -2,7 +2,6 @@
 import MapGL from 'react-map-gl';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { ReactNode } from 'react';
 
 const defaultView = {
   latitude: 46.9,
@@ -10,7 +9,7 @@ const defaultView = {
   zoom: 5
 };
 
-const Map = ({ title, children }:{ title?: string, children?: ReactNode }) => {
+const Map = ({ title }:{ title?: string }) => {
   return (
     <div className="fr-callout">
       <h3 className="fr-callout__title">{ title }</h3>
@@ -20,7 +19,6 @@ const Map = ({ title, children }:{ title?: string, children?: ReactNode }) => {
         style={{width: '100%', height: 400}}
         mapStyle="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"
       >
-        { children }
       </MapGL>
     </div>
   );

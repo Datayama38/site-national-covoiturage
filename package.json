@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 4200",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -15,15 +15,16 @@
     "@types/node": "18.16.0",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.0",
-    "deck.gl": "^8.9.15",
+    "deck.gl": "8.8",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.1",
     "mapbox-gl": "npm:empty-npm-package@^1.0.0",
     "maplibre-gl": "^2.4.0",
-    "next": "13.3.1",
+    "next": "^13.4.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-map-gl": "^7.0.23",
+    "simple-statistics": "^7.8.3",
     "typescript": "5.0.4"
   }
 }
