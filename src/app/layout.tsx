@@ -4,7 +4,9 @@ import { getColorSchemeHtmlAttributes } from "@codegouvfr/react-dsfr/next-appdir
 import StartDsfr from "./StartDsfr";
 import { defaultColorScheme } from "./defaultColorScheme";
 import Header from "@/components/Header"
+//import Footer from "@/components/Footer"
 import { ReactNode } from "react";
+
 
 export default function RootLayout({ children }: { children: ReactNode; }) {
 
@@ -17,7 +19,9 @@ export default function RootLayout({ children }: { children: ReactNode; }) {
       <body>
         <DsfrProvider defaultColorScheme={defaultColorScheme}>
           <Header />
-          {children}
+          <div className="fr-container">
+            {children}
+          </div>
         </DsfrProvider>
       </body>
     </html>
