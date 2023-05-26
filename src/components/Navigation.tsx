@@ -25,7 +25,7 @@ export default function Navigation() {
               linkProps: {
                 href: '/observatoire/territoire'
               },
-              text: 'Analyse par territoire',
+              text: 'Observer un territoire',
               isActive: pathname === '/observatoire/territoire',
             },
             {
@@ -53,8 +53,20 @@ export default function Navigation() {
           text: 'Observatoire',
           isActive: pathname.startsWith('/observatoire'),
         },
-        {linkProps: {href: '#', target: '_self'}, text: 'accès direct'}, 
-        {linkProps: {href: '#', target: '_self'}, text: 'accès direct'}
+        {
+          menuLinks: [
+          ],
+          text: 'Collectivités',
+          isActive: pathname.startsWith('/collectivites'),
+        },
+        {
+          menuLinks: [
+          ],
+          text: 'Vous êtes',
+          isActive: pathname.startsWith('/vous-etes'),
+        },
+        {linkProps: {href: '/actualites', target: '_self'}, text: 'Actualités', isActive: pathname === '/actualites'}, 
+        {linkProps: {href: '/documentation', target: '_self'}, text: 'Documentation', isActive: pathname === '/documentation'}
       ]} 
     />
   );

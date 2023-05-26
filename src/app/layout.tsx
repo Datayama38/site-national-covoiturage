@@ -3,9 +3,11 @@ import { DsfrProvider } from "@codegouvfr/react-dsfr/next-appdir/DsfrProvider";
 import { getColorSchemeHtmlAttributes } from "@codegouvfr/react-dsfr/next-appdir/getColorSchemeHtmlAttributes";
 import StartDsfr from "./StartDsfr";
 import { defaultColorScheme } from "./defaultColorScheme";
-import Header from "@/components/Header"
-//import Footer from "@/components/Footer"
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Display } from "@codegouvfr/react-dsfr/Display";
 import { ReactNode } from "react";
+import { fr } from '@codegouvfr/react-dsfr';
 
 
 export default function RootLayout({ children }: { children: ReactNode; }) {
@@ -19,9 +21,11 @@ export default function RootLayout({ children }: { children: ReactNode; }) {
       <body>
         <DsfrProvider defaultColorScheme={defaultColorScheme}>
           <Header />
-          <div className="fr-container">
+          <div className={fr.cx('fr-container')}>
             {children}
           </div>
+          <Footer />
+          <Display />
         </DsfrProvider>
       </body>
     </html>

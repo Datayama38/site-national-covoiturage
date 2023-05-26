@@ -1,4 +1,5 @@
 'use client'
+import { fr } from '@codegouvfr/react-dsfr';
 import { getFlux } from '@/app/api/map';
 import { useState, useEffect } from 'react';
 import { jenks, classWidth } from '@/helpers/analyse';
@@ -57,16 +58,29 @@ export default function FluxMap() {
   
   return (
     <>
-      {loading && <div>A moment please...</div>}
-      {error && (
-        <div>{`Un problème est survenu au chargement des données: ${error}`}</div>
-      )}
-      < DeckMap 
-        title={title}
-        tooltip={tooltip} 
-        mapStyle={mapStyle}
-        layers={[layer]}
-      />
+      {
+        loading && 
+        <div className={fr.cx('fr-callout')}>
+          <h3 className={fr.cx('fr-callout__title')}>{ title }</h3>
+          <div>Chargement en cours...</div>
+        </div>
+      }
+      { 
+        error && 
+        <div className={fr.cx('fr-callout')}>
+          <h3 className={fr.cx('fr-callout__title')}>{ title }</h3>
+          <div>{`Un problème est survenu au chargement des données: ${error}`}</div>
+        </div>
+      }
+      {
+        !loading && !error &&
+        < DeckMap 
+          title={title}
+          tooltip={tooltip} 
+          mapStyle={mapStyle}
+          layers={[layer]}
+        />
+      }
     </>
   )
 }
