@@ -1,33 +1,14 @@
 'use client'
 import { fr } from '@codegouvfr/react-dsfr';
-import { getFlux } from '@/app/api/map';
-import { useState, useEffect } from 'react';
+import { useFlux } from './getData';
 import { jenks, classWidth } from '@/helpers/analyse';
 import { ArcLayer } from '@deck.gl/layers/typed';
 import DeckMap from '@/components/observatoire/maps/DeckMap';
 
-export default function FluxMap() {
+export default function FluxMap({props}:{props:any}) {
   const title = 'test'
-  const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    getFlux('XXXXX','com','country',2022,1)
-      .then(response => { 
-        setData(response);
-        setError(null);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setData([]);
-      })
-      .finally(() => {
-        setLoading(false);
-      })
-  }, []);
+  const { data, error, loading} = useFlux(props.code,props.type,props.observe,props.year,props.month);
   const mapStyle = 'https://openmaptiles.geo.data.gouv.fr/styles/osm-bright/style.json';
-
-  
   const analyse = data.length > 0 ? jenks(data,'passengers',['#000091','#000091','#000091','#000091','#000091','#000091'],[1,3,6,12,24,48]) : [];
   const layer = new ArcLayer({
     id:'flux-layer',
