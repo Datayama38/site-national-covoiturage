@@ -23,10 +23,10 @@ export default function Navigation() {
             },
             {
               linkProps: {
-                href: '/observatoire/territoire'
+                href: '/observatoire/territoire?code=XXXXX&type=com&observe=country&year=2022&month=1'
               },
               text: 'Observer un territoire',
-              isActive: pathname === '/observatoire/territoire',
+              isActive: pathname.startsWith('/observatoire/territoire'),
             },
             {
               linkProps: {

@@ -2,7 +2,7 @@
 import MapGL from 'react-map-gl';
 import { NavigationControl } from 'react-map-gl';
 import maplibregl from 'maplibre-gl';
-import { MapInterface } from '@/interfaces/componentsInterfaces';
+import { MapInterface } from '@/interfaces/observatoire/componentsInterfaces';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
 const defaultView = {

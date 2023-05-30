@@ -1,17 +1,15 @@
 'use client'
+import { useRef } from 'react';
 import {MapboxOverlay, MapboxOverlayProps} from '@deck.gl/mapbox/typed';
-import MapGL  from 'react-map-gl';
-import { useControl, NavigationControl } from 'react-map-gl';
+import MapGL, { MapRef, useControl, NavigationControl } from 'react-map-gl';
 import maplibregl from 'maplibre-gl';
-import { DeckMapInterface } from '@/interfaces/componentsInterfaces';
+import Legend from './Legend';
+import { DeckMapInterface } from '@/interfaces/observatoire/componentsInterfaces';
 //css
 import 'maplibre-gl/dist/maplibre-gl.css';
 
-const defaultView = {
-  latitude: 46.9,
-  longitude: 1.7,
-  zoom: 5,
-};
+
+
 
 function DeckGLOverlay(props: MapboxOverlayProps & {
   interleaved?: boolean;
@@ -21,11 +19,23 @@ function DeckGLOverlay(props: MapboxOverlayProps & {
   return null;
 }
 
+
 const DeckMap = (props:DeckMapInterface) => {
+  const mapRef = useRef<MapRef>(null);
+  const defaultView = {
+    latitude: 46.9,
+    longitude: 1.7,
+    zoom: 5,
+  };
+  const getBounds = ()=>{
+    return props.bounds ? mapRef.current?.fitBounds(props.bounds) : []
+  }
+
   return (
     <div className="fr-callout" >
       <h3 className="fr-callout__title">{ props.title }</h3>
       <MapGL 
+        ref={mapRef}
         mapLib={maplibregl}
         initialViewState={props.initialView ? props.initialView : defaultView}
         style={{
@@ -33,9 +43,11 @@ const DeckMap = (props:DeckMapInterface) => {
           height: props.height? props.height : '60vh'
         }}
         mapStyle={props.mapStyle}
+        onLoad={ getBounds }
       >
-        <DeckGLOverlay layers={props.layers} getTooltip={props.tooltip}/>
+        <DeckGLOverlay layers={props.layers} getTooltip={props.tooltip} />
         <NavigationControl />
+        <Legend title={props.title}/>
       </MapGL>
     </div>
   );

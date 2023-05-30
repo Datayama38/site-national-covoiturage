@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@codegouvfr/react-dsfr": "^0.55.1",
+    "@turf/bbox": "^6.5.0",
+    "@turf/helpers": "^6.5.0",
     "@types/node": "18.16.0",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.0",
