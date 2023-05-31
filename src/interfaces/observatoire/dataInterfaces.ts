@@ -7,5 +7,10 @@ export interface FluxDataInterface{
   lat_2:number,
   passengers:number,
   distance:number,
-  duration:number
+  duration:number,
+}
+
+export interface DensiteDataInterface{
+  hex:string,
+  count:number,
 }
